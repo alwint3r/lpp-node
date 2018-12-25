@@ -1,9 +1,9 @@
 'use strict';
 
-const _ = require(`lodash`);
-const payload = require(`./payload`);
+import * as _ from 'lodash';
+import * as payload from './payload';
 
-function decode(buffer) {
+export function decode(buffer: Buffer) {
   if (buffer.length < 3) {
     return [];
   }
@@ -24,7 +24,10 @@ function decode(buffer) {
       return result;
     }
 
-    const length = payload.getPayloadSizeFromObjectID(objectId);
+    let length = payload.getPayloadSizeFromObjectID(objectId);
+    if (_.isUndefined(length)) {
+      length = 0;
+    }
 
     let data;
     const slice = buffer.slice(cursor, cursor + length);
@@ -32,20 +35,20 @@ function decode(buffer) {
     switch (type) {
       case payload.TYPES.IPSO_DIGITAL_INPUT:
       case payload.TYPES.IPSO_DIGITAL_OUTPUT:
-        data = slice.readUInt8();
+        data = slice.readUInt8(0);
         break;
       case payload.TYPES.IPSO_ANALOG_OUTPUT:
       case payload.TYPES.IPSO_ANALOG_INPUT:
-        data = slice.readInt16BE() / 100.0;
+        data = slice.readInt16BE(0) / 100.0;
         break;
       case payload.TYPES.IPSO_ILLUMINANCE_SENSOR:
-        data = slice.readInt16BE();
+        data = slice.readInt16BE(0);
         break;
       case payload.TYPES.IPSO_TEMPERATURE_SENSOR:
-        data = slice.readInt16BE() / 10.0;
+        data = slice.readInt16BE(0) / 10.0;
         break;
       case payload.TYPES.IPSO_HUMIDITY_SENSOR:
-        data = slice.readInt8() / 50.0;
+        data = slice.readInt8(0) / 50.0;
         break;
       case payload.TYPES.IPSO_ACCELEROMETER:
         data = [
@@ -55,7 +58,7 @@ function decode(buffer) {
         ];
         break;
       case payload.TYPES.IPSO_BAROMETER:
-        data = slice.readInt16BE() / 10.0;
+        data = slice.readInt16BE(0) / 10.0;
         break;
       case payload.TYPES.IPSO_GYROMETER:
         data = [
@@ -80,7 +83,3 @@ function decode(buffer) {
 
   return result;
 }
-
-module.exports = {
-  decode,
-};
