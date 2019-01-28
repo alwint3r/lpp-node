@@ -7,8 +7,12 @@
   "scripts": {
     "build": "tsc",
     "pretest": "npm run build",
-    "test": "jest --notify"
+    "test": "jest --notify",
+    "prepack": "npm run build"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [],
   "author": "Alwin Arrasyid <alwin.ridd@gmail.com>",
   "license": "MIT",
