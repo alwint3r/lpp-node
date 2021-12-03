@@ -2,9 +2,7 @@
 
 import * as _ from 'lodash';
 
-export interface IPSOTypesObject {
-  [key: string]: string,
-}
+export type IPSOTypesObject = Record<string, string>;
 
 export const TYPES: IPSOTypesObject = {
   IPSO_DIGITAL_INPUT: `IPSO_DIGITAL_INPUT`,
@@ -22,9 +20,7 @@ export const TYPES: IPSOTypesObject = {
   IPSO_GPS_LOCATION: `IPSO_GPS_LOCATION`,
 };
 
-export interface IPSOTypeSizesObject {
-  [key: string]: number,
-}
+export type IPSOTypeSizesObject = Record<string, number>;
 
 export const SIZES: IPSOTypeSizesObject = {
   [TYPES.IPSO_DIGITAL_INPUT]: 1,
@@ -41,9 +37,7 @@ export const SIZES: IPSOTypeSizesObject = {
   [TYPES.IPSO_GPS_LOCATION]: 9,
 };
 
-export interface IPSOObjectIDObject {
-  [key: string]: number,
-}
+export type IPSOObjectIDObject = Record<string, number>;
 
 export const OBJECT_IDS: IPSOObjectIDObject = {
   [TYPES.IPSO_DIGITAL_INPUT]: 0,
@@ -60,9 +54,7 @@ export const OBJECT_IDS: IPSOObjectIDObject = {
   [TYPES.IPSO_GPS_LOCATION]: 136,
 };
 
-export interface IPSOObjectIDToTypesMapping {
-  [key: number]: string,
-}
+export type IPSOObjectIDToTypesMapping = Record<number, string>;
 
 export const OBJECT_IDS_TO_TYPES_MAP: IPSOObjectIDToTypesMapping = _.invert(OBJECT_IDS);
 

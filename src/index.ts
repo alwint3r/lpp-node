@@ -48,7 +48,7 @@ export function decode(buffer: Buffer) {
         data = slice.readInt16BE(0) / 10.0;
         break;
       case payload.TYPES.IPSO_HUMIDITY_SENSOR:
-        data = slice.readInt8(0) / 50.0;
+        data = slice.readUInt8(0) / 2;
         break;
       case payload.TYPES.IPSO_ACCELEROMETER:
         data = [
