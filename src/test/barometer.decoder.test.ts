@@ -6,7 +6,7 @@ test("Decode barometer data", () => {
   const result = decoder.decode(data);
 
   expect(result).toEqual({
-    type: 73,
+    type: 115,
     channel: 24,
     data: 883.7,
     label: "Barometer",

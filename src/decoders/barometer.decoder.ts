@@ -2,7 +2,7 @@ import { BaseDataDecoder, DecoderOutput } from "./base";
 
 export class BarometerDecoder extends BaseDataDecoder<number> {
   getType() {
-    return 73;
+    return 115;
   }
 
   getSize() {
