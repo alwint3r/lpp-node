@@ -77,3 +77,24 @@ test("lpp decoder decode digital in/out, analog in, and illuminance sensor", () 
     channel: 10,
   });
 });
+
+
+test("lpp decoder decode multiple temperature sensor", () => {
+  const lpp = new LPPDecoder();
+  const data = Buffer.from("03670110056700FF", "hex");
+  const result = lpp.decode(data);
+
+  expect(result.length).toBe(2);
+  expect(result).toContainEqual({
+    label: "Temperature Sensor",
+    data: 27.2,
+    channel: 3,
+    type: 103,
+  });
+  expect(result).toContainEqual({
+    label: "Temperature Sensor",
+    data: 25.5,
+    channel: 5,
+    type: 103,
+  });
+});
