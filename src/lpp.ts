@@ -4,6 +4,7 @@ import { DigitalInputDecoder } from "./decoders/digital-input.decoder";
 import { DigitalOutputDecoder } from "./decoders/digital-output.decoder";
 import { IlluminanceSensorDecoder } from "./decoders/illuminance-sensor.decoder";
 import { PresenceSensorDecoder } from "./decoders/presence-sensor.decoder";
+import { RelativeHumidityDecoder } from "./decoders/relative-humidity.decoder";
 import { TemperatureSensorDecoder } from "./decoders/temperature-sensor.decoder";
 
 export class LPPDecoder {
@@ -18,6 +19,7 @@ export class LPPDecoder {
       new IlluminanceSensorDecoder(),
       new PresenceSensorDecoder(),
       new TemperatureSensorDecoder(),
+      new RelativeHumidityDecoder(),
     ];
 
     this.extendedDecoders = {};
