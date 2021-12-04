@@ -1,3 +1,4 @@
+import { AccelerometerDecoder } from "./decoders/accelerometer.decoder";
 import { AnalogInputDecoder } from "./decoders/analog-input.decoder";
 import { DataDecoder, DecoderMap, DecoderOutput } from "./decoders/base";
 import { DigitalInputDecoder } from "./decoders/digital-input.decoder";
@@ -8,7 +9,7 @@ import { RelativeHumidityDecoder } from "./decoders/relative-humidity.decoder";
 import { TemperatureSensorDecoder } from "./decoders/temperature-sensor.decoder";
 
 export class LPPDecoder {
-  private builtInDecoders: DataDecoder[];
+  private builtInDecoders: DataDecoder<unknown>[];
   private extendedDecoders: DecoderMap;
 
   constructor() {
@@ -20,6 +21,7 @@ export class LPPDecoder {
       new PresenceSensorDecoder(),
       new TemperatureSensorDecoder(),
       new RelativeHumidityDecoder(),
+      new AccelerometerDecoder(),
     ];
 
     this.extendedDecoders = {};
