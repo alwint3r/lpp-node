@@ -1,5 +1,6 @@
 import { AccelerometerDecoder } from "./decoders/accelerometer.decoder";
 import { AnalogInputDecoder } from "./decoders/analog-input.decoder";
+import { BarometerDecoder } from "./decoders/barometer.decoder";
 import { DataDecoder, DecoderMap, DecoderOutput } from "./decoders/base";
 import { DigitalInputDecoder } from "./decoders/digital-input.decoder";
 import { DigitalOutputDecoder } from "./decoders/digital-output.decoder";
@@ -22,6 +23,7 @@ export class LPPDecoder {
       new TemperatureSensorDecoder(),
       new RelativeHumidityDecoder(),
       new AccelerometerDecoder(),
+      new BarometerDecoder(),
     ];
 
     this.extendedDecoders = {};
