@@ -1,23 +1,23 @@
 import { BaseDataDecoder, DecoderOutput } from "./base";
 
-export class DigitalOutputDecoder extends BaseDataDecoder<number> {
+export class AnalogInputDecoder extends BaseDataDecoder {
   decode(data: Buffer): DecoderOutput<number> {
     const channel = data.readUInt8(0);
-    const value = data.readUInt8(2);
+    const value = data.readInt16BE(2);
 
     return {
+      label: "Analog Input",
       channel,
-      data: value,
       type: this.getType(),
-      label: "Digital Output",
-    };
+      data: value / 100.0,
+    }
   }
 
   getSize(): number {
-    return 1;
+    return 2;
   }
 
   getType(): number {
-    return 1;
+    return 2;
   }
 }

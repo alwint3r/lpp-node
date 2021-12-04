@@ -1,3 +1,4 @@
+import { AnalogInputDecoder } from "./decoders/analog-input.decoder";
 import { DataDecoder, DecoderMap, DecoderOutput } from "./decoders/base";
 import { DigitalInputDecoder } from "./decoders/digital-input.decoder";
 import { DigitalOutputDecoder } from "./decoders/digital-output.decoder";
@@ -10,6 +11,7 @@ export class LPPDecoder {
     this.builtInDecoders = [
       new DigitalInputDecoder(),
       new DigitalOutputDecoder(),
+      new AnalogInputDecoder(),
     ];
 
     this.extendedDecoders = {};
@@ -34,7 +36,7 @@ export class LPPDecoder {
       const decoded = decoder.decode(data.slice(cursor));
       result.push(decoded);
 
-      cursor += 1 + decoder.getSize();
+      cursor += 2 + decoder.getSize();
     }
 
     return result;

@@ -5,6 +5,8 @@ test('decode digital output', () => {
   const data = Buffer.from('000001', 'hex');
   const result = decoder.decode(data);
 
+  expect(decoder.getSize()).toBe(1);
+
   expect(result).toEqual({
     label: 'Digital Output',
     data: 1,

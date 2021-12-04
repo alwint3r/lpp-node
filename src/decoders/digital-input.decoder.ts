@@ -1,20 +1,8 @@
-import { DataDecoder, DecoderOutput } from "./base";
+import { BaseDataDecoder, DecoderOutput } from "./base";
 
-export class DigitalInputDecoder implements DataDecoder<number> {
-  isValid(data: Buffer): boolean {
-    if (data.length < 3) {
-      return false;
-    }
-
-    if (data[1] === this.getType()) {
-      return true;
-    }
-
-    return true;
-  }
-
+export class DigitalInputDecoder extends BaseDataDecoder<number> {
   getSize(): number {
-    return 2;
+    return 1;
   }
 
   getType(): number {
