@@ -3,6 +3,7 @@ import { DataDecoder, DecoderMap, DecoderOutput } from "./decoders/base";
 import { DigitalInputDecoder } from "./decoders/digital-input.decoder";
 import { DigitalOutputDecoder } from "./decoders/digital-output.decoder";
 import { IlluminanceSensorDecoder } from "./decoders/illuminance-sensor.decoder";
+import { PresenceSensorDecoder } from "./decoders/presence-sensor.decoder";
 
 export class LPPDecoder {
   private builtInDecoders: DataDecoder[];
@@ -14,6 +15,7 @@ export class LPPDecoder {
       new DigitalOutputDecoder(),
       new AnalogInputDecoder(),
       new IlluminanceSensorDecoder(),
+      new PresenceSensorDecoder(),
     ];
 
     this.extendedDecoders = {};
