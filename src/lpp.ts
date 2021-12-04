@@ -4,6 +4,7 @@ import { BarometerDecoder } from "./decoders/barometer.decoder";
 import { DataDecoder, DecoderMap, DecoderOutput } from "./decoders/base";
 import { DigitalInputDecoder } from "./decoders/digital-input.decoder";
 import { DigitalOutputDecoder } from "./decoders/digital-output.decoder";
+import { GpsDecoder } from "./decoders/gps.decoder";
 import { GyroscopeDecoder } from "./decoders/gyroscope.decoder";
 import { IlluminanceSensorDecoder } from "./decoders/illuminance-sensor.decoder";
 import { PresenceSensorDecoder } from "./decoders/presence-sensor.decoder";
@@ -26,6 +27,7 @@ export class LPPDecoder {
       new AccelerometerDecoder(),
       new BarometerDecoder(),
       new GyroscopeDecoder(),
+      new GpsDecoder(),
     ];
 
     this.extendedDecoders = {};
