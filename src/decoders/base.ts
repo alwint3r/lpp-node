@@ -5,7 +5,7 @@ export type DecoderOutput<T> = {
   data: T;
 };
 
-export type DecoderMap = Record<number, DataDecoder>;
+export type DecoderMap<T> = Record<number, DataDecoder<T>>;
 
 export interface DataDecoder<T = number> {
   decode(data: Buffer): DecoderOutput<T>;

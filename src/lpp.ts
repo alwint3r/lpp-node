@@ -13,7 +13,7 @@ import { TemperatureSensorDecoder } from "./decoders/temperature-sensor.decoder"
 
 export class LPPDecoder {
   private builtInDecoders: DataDecoder<unknown>[];
-  private extendedDecoders: DecoderMap;
+  private extendedDecoders: DecoderMap<unknown>;
 
   constructor() {
     this.builtInDecoders = [
@@ -33,8 +33,17 @@ export class LPPDecoder {
     this.extendedDecoders = {};
   }
 
+  addNewDecoder<T>(decoder: DataDecoder<T>) {
+    this.extendedDecoders[decoder.getType()] = decoder;
+  }
+
   private findDecoder(type: number): DataDecoder<unknown> | undefined {
-    return this.builtInDecoders.find((decoder) => decoder.getType() === type);
+    const decoder = this.extendedDecoders[type];
+    if (!decoder) {
+      return this.builtInDecoders.find((decoder) => decoder.getType() === type);
+    }
+
+    return decoder;
   }
 
   decode(data: Buffer): DecoderOutput<unknown>[] {
