@@ -16,13 +16,9 @@
   "keywords": [],
   "author": "Alwin Arrasyid <alwin.ridd@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "@types/lodash": "^4.14.177",
-    "@types/node": "^16.11.11",
-    "lodash": "^4.17.21"
-  },
   "devDependencies": {
     "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.11",
     "jest": "^27.4.3",
     "node-notifier": "^10.0.0",
     "ts-jest": "^27.0.7",
