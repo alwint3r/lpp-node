@@ -144,7 +144,8 @@ test("custom lpp decoder for non-standard GPS precision", () => {
   const data = Buffer.from("0d96ff6921e43bf7eb8f", "hex");
   const result = lpp.decode(data);
 
-  const gps: DecoderOutput<GpsLocation> = result[0] as DecoderOutput<GpsLocation>;
+  const gps: DecoderOutput<GpsLocation> =
+    result[0] as DecoderOutput<GpsLocation>;
 
   expect(result.length).toBe(1);
   expect(gps.channel).toBe(13);
@@ -152,4 +153,16 @@ test("custom lpp decoder for non-standard GPS precision", () => {
   expect(gps.data.latitude).toBeCloseTo(-0.988726, 5);
   expect(gps.data.longitude).toBeCloseTo(100.610346, 5);
   expect(gps.type).toBe(150);
+});
+
+test("Decode data from real device", () => {
+  const lpp = new LPPDecoder();
+
+  const data = Buffer.from(
+    "1367086d187322a4196883176708760a02101b00000f",
+    "hex"
+  );
+  const result = lpp.decode(data);
+
+  expect(result.length).toBe(6);
 });

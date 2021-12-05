@@ -5,7 +5,7 @@ test('Decode relative humidity', () => {
   const data = Buffer.from('19688a', 'hex');
   const result = decoder.decode(data);
 
-  expect(decoder.getSize()).toBe(2);
+  expect(decoder.getSize()).toBe(1);
 
   expect(result).toEqual({
     label: 'Relative Humidity',

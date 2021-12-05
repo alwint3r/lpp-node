@@ -2,7 +2,7 @@ import { BaseDataDecoder, DecoderOutput } from "./base";
 
 export class RelativeHumidityDecoder extends BaseDataDecoder<number> {
   getSize() {
-    return 2;
+    return 1;
   }
 
   getType() {
