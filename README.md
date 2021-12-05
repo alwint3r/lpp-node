@@ -13,7 +13,7 @@ Unofficial library for dealing with Cayenne LPP in Node.js
 
 Decoder class with built-in decoders for standard types defined in the Cayenne LPP specification format.
 
-#### LPPDecoder.decode(data: Buffer): DecoderOutput\<unknown>[]
+**LPPDecoder.decode(data: Buffer): DecoderOutput\<unknown>[]**
 
 Takes a buffer as an argument and produce an array of `DecoderOutput` which has the following structure (in case of `number` as the type of the `data`):
 
